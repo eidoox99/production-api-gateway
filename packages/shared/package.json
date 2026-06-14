@@ -1,0 +1,21 @@
+{
+  "name": "@production-grade-api-gateway/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --project tsconfig.json"
+  },
+  "dependencies": {
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "winston": "^3.17.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/http-errors": "^2.0.4",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.3"
+  }
+}

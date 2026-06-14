@@ -1,0 +1,17 @@
+{
+  "name": "production-grade-api-gateway",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:shared": "pnpm --filter @production-grade-api-gateway/shared build",
+    "build:api-gateway": "pnpm --filter @production-grade-api-gateway/api-gateway... build",
+    "build:user-service": "pnpm --filter @production-grade-api-gateway/user-service... build",
+    "build:order-service": "pnpm --filter @production-grade-api-gateway/order-service... build",
+    "build:payment-service": "pnpm --filter @production-grade-api-gateway/payment-service... build",
+    "start:api-gateway": "pnpm --filter @production-grade-api-gateway/api-gateway start",
+    "start:user-service": "pnpm --filter @production-grade-api-gateway/user-service start",
+    "start:order-service": "pnpm --filter @production-grade-api-gateway/order-service start",
+    "start:payment-service": "pnpm --filter @production-grade-api-gateway/payment-service start"
+  }
+}
