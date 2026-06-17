@@ -1,10 +1,4 @@
-export interface CircuitBreakerConfig {
-  timeout: number;
-  failureThreshold: number;
-  minimumRequests: number;
-  cooldownPeriod: number;
-  halfOpenMaxRequests: number;
-}
+import type { CircuitBreakerConfig } from "./circuit-breaker.types.js";
 
 export type UpstreamServiceName =
   | "user-service"
