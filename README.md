@@ -1,4 +1,6 @@
 # production-grade-api-gateway
+You can find the complete architectural discussion and production lessons behind this implementation in my Production Insight:
+[We Thought Our API Gateway Would Protect Us. It Became Our Biggest Single Point of Failure](https://eidox.hashnode.dev/we-thought-our-api-gateway-would-protect-us-it-became-our-biggest-single-point-of-failure)
 
 ## What a Production-Grade API Gateway Actually Looks Like
 
