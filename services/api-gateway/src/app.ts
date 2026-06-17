@@ -4,7 +4,7 @@ import helmet from "helmet";
 import { signToken, createError } from "@production-grade-api-gateway/shared";
 import { config } from "./config/config.js";
 import { createAuthMiddleware } from "./middlewares/auth.js";
-import { createGatewayProxy } from "./proxy/proxy.js";
+import { createProxyService } from "./proxy/proxy.service.js";
 
 const app = express();
 const authMiddleware = createAuthMiddleware(config.jwtSecret);
@@ -25,7 +25,7 @@ app.post("/auth/login", express.json(), (req, res, next) => {
 
 app.use(
   authMiddleware,
-  createGatewayProxy({
+  createProxyService({
     userServiceUrl: config.userServiceUrl,
     orderServiceUrl: config.orderServiceUrl,
     paymentServiceUrl: config.paymentServiceUrl,

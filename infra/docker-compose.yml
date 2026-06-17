@@ -1,48 +1,43 @@
-services:
-  api-gateway:
-    build:
-      context: ../services/api-gateway
-    ports:
-      - "3000:3000"
-    environment:
-      JWT_SECRET: dev-secret
-      USER_SERVICE_URL: http://user-service:3001
-      ORDER_SERVICE_URL: http://order-service:3002
-      PAYMENT_SERVICE_URL: http://payment-service:3003
-    depends_on:
-      - redis
-      - user-service
-      - order-service
-      - payment-service
-
-  user-service:
-    build:
-      context: ../services/user-service
-    ports:
-      - "3001:3001"
-
-  order-service:
-    build:
-      context: ../services/order-service
-    ports:
-      - "3002:3002"
-
-  payment-service:
-    build:
-      context: ../services/payment-service
-    ports:
-      - "3003:3003"
-
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - api-gateway
+services:
+  api-gateway:
+    build:
+      context: ../services/api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      JWT_SECRET: dev-secret
+      USER_SERVICE_URL: http://user-service:3001
+      ORDER_SERVICE_URL: http://order-service:3002
+      PAYMENT_SERVICE_URL: http://payment-service:3003
+    depends_on:
+      - user-service
+      - order-service
+      - payment-service
+
+  user-service:
+    build:
+      context: ../services/user-service
+    ports:
+      - "3001:3001"
+
+  order-service:
+    build:
+      context: ../services/order-service
+    ports:
+      - "3002:3002"
+
+  payment-service:
+    build:
+      context: ../services/payment-service
+    ports:
+      - "3003:3003"
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api-gateway
