@@ -29,7 +29,7 @@ On top of that we run **3 api-gateway instances** (`api-gateway-1`, `api-gateway
 The full path looks like this:
 
 ```
-Client → Nginx → api-gateway (1 of 3) → backend service
+Client : Nginx : api-gateway (1 of 3) : backend service
 ```
 
 If a service starts failing too much, the **circuit breaker** on the gateway stops calling it and returns a `503` instead of waiting for a timeout. Once the cooldown passes, it lets a few test requests through to see if things are back up.
