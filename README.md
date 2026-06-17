@@ -4,7 +4,7 @@ You can find the complete architectural discussion and production lessons behind
 
 ## What a Production-Grade API Gateway Actually Looks Like
 
-![API Gateway Production Architecture](./assets/api-gateway-production-architecture.png)
+![API Gateway Production Architecture](./assets/prodgattt.png)
 
 ## How circuit breaker works?
 
