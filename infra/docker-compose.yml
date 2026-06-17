@@ -1,19 +1,28 @@
+x-api-gateway: &api-gateway
+  build:
+    context: ../services/api-gateway
+  environment:
+    PORT: 3000
+    JWT_SECRET: dev-secret
+    USER_SERVICE_URL: http://user-service:3001
+    ORDER_SERVICE_URL: http://order-service:3002
+    PAYMENT_SERVICE_URL: http://payment-service:3003
+  depends_on:
+    - user-service
+    - order-service
+    - payment-service
+
 services:
-  api-gateway:
-    build:
-      context: ../services/api-gateway
+  api-gateway-1:
+    <<: *api-gateway
     ports:
       - "3000:3000"
-    environment:
-      PORT: 3000
-      JWT_SECRET: dev-secret
-      USER_SERVICE_URL: http://user-service:3001
-      ORDER_SERVICE_URL: http://order-service:3002
-      PAYMENT_SERVICE_URL: http://payment-service:3003
-    depends_on:
-      - user-service
-      - order-service
-      - payment-service
+
+  api-gateway-2:
+    <<: *api-gateway
+
+  api-gateway-3:
+    <<: *api-gateway
 
   user-service:
     build:
@@ -40,4 +49,6 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - api-gateway
+      - api-gateway-1
+      - api-gateway-2
+      - api-gateway-3
